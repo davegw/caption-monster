@@ -1,3 +1,26 @@
 %h2 Hellow World
 %p
   The time is now: #{Time.now} beiout
+
+%form
+  First Name:
+  %input{:type => "text"}
+  Last Name
+  %input{:type => "text"}
+  %input{:type => "submit"}
+
+  / # - @caption = [2, 5, 9]
+  / # #{@caption}
+/ = form_for @what, url: {action: "create"} do |f|
+/   = f.text_field :title
+/   = f.text_area :body, size: "60x12"
+/   = f.submit "Create"
+
+%form
+  = check_box_tag(:pet)
+  = label_tag(:pet, "Check me")
+  = radio_button_tag(:pet, "dog")
+  = label_tag(:pet_dog, "Check me")
+  = radio_button_tag(:pet, "cat")
+  = label_tag(:pet_cat, "Check me")
+

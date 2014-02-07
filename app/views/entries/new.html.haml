@@ -1,0 +1,6 @@
+Hola!
+
+= form_for @entry, :url => entries_url, :html => {:class => "nifty_form"} do |f|
+  = f.label 'picture_title', 'Title:'
+  = f.datetime_field :title
+  = f.submit "Create"
