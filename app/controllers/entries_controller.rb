@@ -4,9 +4,17 @@ class EntriesController < ApplicationController
   end
 
   def create
-    @entry = Entry.new(:title => params[:entry][:title])
+    @entry = Entry.new(:title => params[:entry][:title], :photo => params[:entry][:photo])
     @entry.save
-    redirect_to entry_url
+    redirect_to show_entry_path(@entry.id)
+  end
+
+  def index
+    @entries = Entry.last(5)
+  end
+
+  def show
+    @entry = Entry.find(params[:id])
   end
 
 end

@@ -1,0 +1,20 @@
+%table
+  %th
+    %td
+      ID
+    %td
+      Title
+    %td
+      Photo
+    %td
+      Created At
+  - @entries.each do |p|
+    %tr{:value => p.id}
+      %td
+        = p.id
+      %td
+        = p.title
+      %td
+        = p.photo.url
+      %td
+        = p.created_at

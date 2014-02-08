@@ -1,0 +1,6 @@
+%h2.title
+  = @entry.title
+.date
+  Created #{pretty_date(@entry.created_at)} #{pretty_time(@entry.created_at)}
+.image
+  = image_tag @entry.photo.url(:medium)
