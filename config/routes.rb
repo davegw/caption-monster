@@ -1,5 +1,5 @@
 Caption::Application.routes.draw do
-  root 'welcome#index'
+  root 'entries#new'
   resources :entries, :only => [:create]
   match '/entry' => 'entries#new', :via => :get, :as => :entry
   match '/entry/index' => 'entries#index', :via => :get, :as => :entries_index

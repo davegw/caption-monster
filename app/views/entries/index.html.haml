@@ -1,20 +1,33 @@
-%table
-  %th
-    %td
-      ID
-    %td
-      Title
-    %td
-      Photo
-    %td
-      Created At
-  - @entries.each do |p|
-    %tr{:value => p.id}
-      %td
-        = p.id
-      %td
-        = p.title
-      %td
-        = p.photo.url
-      %td
-        = p.created_at
+- body_id = 'index'
+%title
+  Entry | Index
+
+%h1
+  Most Recent Images
+#entry_index
+  %table
+    %tr
+      %th
+        ID
+      %th
+        Title
+      %th
+        Image Name
+      %th
+        Created At
+    - @entries.each do |p|
+      %tr{:value => p.id}
+        %td
+          = p.id
+        %td
+          = p.title
+        %td
+          - if p.photo_file_name
+            = p.photo_file_name
+          - else
+            None
+        %td
+          = pretty_date(p.created_at)
+          = pretty_time(p.created_at)
+
+= link_to 'Create an Image', entry_path

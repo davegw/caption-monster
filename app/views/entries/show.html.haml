@@ -4,3 +4,5 @@
   Created #{pretty_date(@entry.created_at)} #{pretty_time(@entry.created_at)}
 .image
   = image_tag @entry.photo.url(:medium)
+
+= link_to "Recent Images", entries_index_path

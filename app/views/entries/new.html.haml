@@ -1,7 +1,18 @@
-Hola!
+%h1
+  Caption Monster
 
-= form_for @entry, :url => entries_url, :html => {:class => "nifty_form", :multipart => true } do |f|
-  = f.label 'picture_title', 'Title:'
-  = f.datetime_field :title
-  = f.file_field :photo
-  = f.submit "Create"
+.recent_images
+  %h3
+    = link_to 'Most recent images', entries_index_url
+
+.upload_form
+  = form_for @entry, :url => entries_url, :html => {:class => "nifty_form", :multipart => true } do |f|
+    .upload
+      = f.label 'photo', 'Upload your photo:'
+      .file
+        = f.file_field :photo
+    .title
+      = f.label 'title', 'Title:'
+      = f.datetime_field :title
+    .submit
+      = f.submit "Create"
