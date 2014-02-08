@@ -1,9 +1,12 @@
 Caption::Application.routes.draw do
   root 'entries#new'
+
   resources :entries, :only => [:create]
   match '/entry' => 'entries#new', :via => :get, :as => :entry
   match '/entry/index' => 'entries#index', :via => :get, :as => :entries_index
   match '/entry/:id' => 'entries#show', :via => :get, :as => :show_entry
+
+  resources :labels, :only => [:create]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

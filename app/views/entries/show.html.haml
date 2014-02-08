@@ -5,4 +5,16 @@
 .image
   = image_tag @entry.photo.url(:medium)
 
+= form_for @label, :url => labels_url do |l|
+  = l.label 'message', 'Your Caption:'
+  = l.text_field :message
+  = l.hidden_field :entry_id, :value => @entry.id
+  = l.submit 'Enter'
+
+#caption_container
+  - @captions = Label.where(:entry_id => @entry.id)
+  - @captions.each do |caption|
+    = caption.message
+    = pretty_date(caption.created_at)
+
 = link_to "Recent Images", entries_index_path

@@ -12,6 +12,8 @@
       %th
         Title
       %th
+        Image
+      %th
         Image Name
       %th
         Created At
@@ -21,6 +23,8 @@
           = p.id
         %td
           = p.title
+        %td.thumbnail
+          = image_tag p.photo.url(:thumb)
         %td
           - if p.photo_file_name
             = p.photo_file_name

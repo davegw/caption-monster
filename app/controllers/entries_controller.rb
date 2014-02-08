@@ -10,11 +10,12 @@ class EntriesController < ApplicationController
   end
 
   def index
-    @entries = Entry.last(5)
+    @entries = Entry.last(10)
   end
 
   def show
     @entry = Entry.find(params[:id])
+    @label = Label.new
   end
 
 end
