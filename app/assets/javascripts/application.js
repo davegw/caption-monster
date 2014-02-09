@@ -20,3 +20,39 @@ $(function() {
     window.location.href = '/entry/' + $(this).attr("value")
   });
 });
+
+$(function() {
+  $('.up-vote .arrow').click(function(e) {
+    e.preventDefault();
+    var id = $(this).closest('.caption').attr('value');
+    var upVote = $(this)
+    var upVoteCount = parseInt(upVote.next('.count').text().replace("+",""));
+    $.ajax({
+      url: '/caption/' + id + '/up-vote', 
+      type: 'PUT',
+      success: function() {
+        upVoteCount = '+' + (upVoteCount + 1)
+        upVote.next('.count').html(upVoteCount)
+        upVote.css('background-color', 'yellow').animate({backgroundColor: '#F7F6C3'}, 1000);
+      }
+    });
+  });
+});
+
+$(function() {
+  $('.down-vote .arrow').click(function(e) {
+    e.preventDefault();
+    var id = $(this).closest('.caption').attr('value');
+    var downVote = $(this)
+    var downVoteCount = parseInt(downVote.next('.count').text().replace("-",""));
+    $.ajax({
+      url: '/caption/' + id + '/down-vote', 
+      type: 'PUT',
+      success: function() {
+        downVoteCount = '-' + (downVoteCount + 1)
+        downVote.next('.count').html(downVoteCount)
+        downVote.css('background-color', 'red').animate({backgroundColor: '#FFA07A'}, 1000);
+      }
+    });
+  });
+});

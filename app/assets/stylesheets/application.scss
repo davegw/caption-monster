@@ -17,3 +17,40 @@ table {
     }
   }
 }
+
+.caption {
+  margin-bottom: 30px;
+}
+
+.vote {
+  margin: 5px;
+}
+.up-vote, 
+.down-vote {
+  display: inline-block;
+  cursor: pointer;
+  img {
+    padding: 3px;
+    width: 20px;
+  }
+  .arrow {
+    display: inline-block;
+  }
+  .count {
+    vertical-align: top;
+    display: inline-block;
+  }
+}
+
+.up-vote .arrow {
+  &:hover {
+    background-color: yellow;
+  }
+}
+
+.down-vote .arrow {
+  margin-left: 20px;
+  &:hover {
+    background-color: red;
+  }
+}

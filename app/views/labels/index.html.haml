@@ -1,0 +1,30 @@
+- body_id = 'caption-index'
+%title
+  Caption | Index
+
+%h1
+  Most Recent Captions
+#caption-index
+  %table
+    %tr
+      %th
+        ID
+      %th
+        Image
+      %th
+        Caption
+      %th
+        Created At
+    - @labels.each do |label|
+      %tr{:value => label.entry.id}
+        %td
+          = label.entry.id
+        %td.thumbnail
+          = image_tag label.entry.photo.url(:thumb)
+        %td
+          = label.message
+        %td
+          = pretty_date(label.created_at)
+          = pretty_time(label.created_at)
+
+= link_to 'Create an Image', entry_path

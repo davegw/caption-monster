@@ -5,6 +5,10 @@
   %h3
     = link_to 'Most recent images', entries_index_url
 
+.recent_captions
+  %h3
+    = link_to "Most recent captions", captions_index_url
+
 .upload_form
   = form_for @entry, :url => entries_url, :html => {:class => "nifty_form", :multipart => true } do |f|
     .upload
