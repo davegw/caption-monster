@@ -48,3 +48,4 @@ end
 gem 'rails_12factor', group: :production
 gem 'haml'
 gem 'paperclip', '~> 4.1.0'
+gem 'rmagick', '2.13.2'
