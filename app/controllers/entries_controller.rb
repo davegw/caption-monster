@@ -10,12 +10,23 @@ class EntriesController < ApplicationController
   end
 
   def index
-    @entries = Entry.last(10)
+    @entries = Entry.all(:order => "created_at DESC", :limit => 10)
   end
 
   def show
     @entry = Entry.find(params[:id])
     @label = Label.new
+  end
+
+  def sort
+    @type = params[:type]
+    @entry = Entry.find(params[:entry_id])
+    if @type == 'best_score'
+      @captions = Label.where(:entry_id => @entry.id).select("*,up_votes - down_votes AS score").order("score DESC")
+    else
+      @captions = Label.where(:entry_id => @entry.id).order("#{@type}  DESC")
+    end
+    render :partial => "sort"
   end
 
 end

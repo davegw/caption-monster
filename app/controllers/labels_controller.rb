@@ -6,7 +6,7 @@ class LabelsController < ApplicationController
   end
 
   def index
-    @labels = Label.last(10)
+    @labels = Label.all(:order => "created_at DESC", :limit => 10)
   end
 
   def up_vote

@@ -10,6 +10,7 @@ Caption::Application.routes.draw do
   match 'caption/index' => 'labels#index', :via => :get, :as => :captions_index
   match 'caption/:id/up-vote' => 'labels#up_vote', :via => :put, :as => :up_vote
   match 'caption/:id/down-vote' => 'labels#down_vote', :via => :put, :as => :down_vote
+  match 'caption/sort' => 'entries#sort', :via => :get, :as => :sort_captions
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -11,22 +11,11 @@
   = l.hidden_field :entry_id, :value => @entry.id
   = l.submit 'Enter'
 
-#caption_container
-  - @captions = Label.where(:entry_id => @entry.id).order("created_at  DESC")
-  - @captions.each do |caption|
-    .caption{:value => caption.id}
-      = caption.message
-      = pretty_date(caption.created_at)
-      .vote
-        .up-vote
-          .arrow
-            = image_tag 'up-vote.png'
-          .count
-            +#{caption.up_votes}
-        .down-vote
-          .arrow
-            = image_tag 'down-vote.png'
-          .count
-            \-#{caption.down_votes}
+#caption-container
+  #sort-filter
+    Sort By:
+    = select_tag(:type, "<option value='created_at'>Date</option><option value='best_score'>Best Score</option><option value='up_votes'>Up-Votes</option><option value='down_votes'>Down-Votes</option>".html_safe)
+  #captions-here
+    = render "sort"
 
 = link_to "Recent Images", entries_index_path

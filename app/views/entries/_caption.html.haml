@@ -1,0 +1,16 @@
+- @captions.each do |caption|
+  .caption{:value => caption.id}
+    = caption.message
+    = pretty_date(caption.created_at)
+    .vote
+      .up-vote
+        .arrow
+          = image_tag 'up-vote.png'
+        .count
+          +#{caption.up_votes}
+      .down-vote
+        .arrow
+          = image_tag 'down-vote.png'
+        .count
+          \-#{caption.down_votes}
+          

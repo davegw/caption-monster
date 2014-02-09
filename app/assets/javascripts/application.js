@@ -33,7 +33,7 @@ $(function() {
       success: function() {
         upVoteCount = '+' + (upVoteCount + 1)
         upVote.next('.count').html(upVoteCount)
-        upVote.css('background-color', 'yellow').animate({backgroundColor: '#F7F6C3'}, 1000);
+        upVote.css('background-color', 'yellow').animate({backgroundColor: '#90EE90'}, 1000);
       }
     });
   });
@@ -54,5 +54,30 @@ $(function() {
         downVote.css('background-color', 'red').animate({backgroundColor: '#FFA07A'}, 1000);
       }
     });
+  });
+});
+
+// Load function works, but loads via POST, should load via GET
+// $(function() {
+//   $('select').change(function(event) {
+//     $('#captions-here').load(
+//       '/caption/sort',
+//       {type: $(event.target).val(),
+//         entry_id: $('#label_entry_id').val()}
+//     );
+//   });
+// });
+
+$(function() {
+  $('select').change(function(event) {
+    // Use GET to correctly load request.
+    $.get(
+      '/caption/sort',
+      {type: $(event.target).val(),
+        entry_id: $('#label_entry_id').val()},
+      function(response) {
+        $('#captions-here').html(response)
+      }
+    );
   });
 });
