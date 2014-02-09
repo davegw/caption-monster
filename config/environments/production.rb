@@ -78,4 +78,6 @@ Caption::Application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
   Paperclip.options[:command_path] = "/usr/bin/"
+  Paperclip.options[:log] = true
+  Paperclip.options[:log_command] = true
 end
