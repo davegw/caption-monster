@@ -14,7 +14,7 @@
 #caption-container
   #sort-filter
     Sort By:
-    = select_tag(:type, "<option value='created_at'>Date</option><option value='best_score'>Best Score</option><option value='up_votes'>Up-Votes</option><option value='down_votes'>Down-Votes</option>".html_safe)
+    = select_tag(:type, options_for_sort)
   #captions-here
     = render "sort"
 
