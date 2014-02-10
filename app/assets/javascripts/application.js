@@ -21,41 +21,52 @@ $(function() {
   });
 });
 
-$(function() {
-  $('.up-vote .arrow').click(function(e) {
-    e.preventDefault();
-    var id = $(this).closest('.caption').attr('value');
-    var upVote = $(this)
-    var upVoteCount = parseInt(upVote.next('.count').text().replace("+",""));
-    $.ajax({
-      url: '/caption/' + id + '/up-vote', 
-      type: 'PUT',
-      success: function() {
-        upVoteCount = '+' + (upVoteCount + 1)
-        upVote.next('.count').html(upVoteCount)
-        upVote.css('background-color', 'yellow').animate({backgroundColor: '#90EE90'}, 1000);
-      }
-    });
+// Log the up vote and update the vote count asynchronously.
+var upVote = function(countVote) {
+  var id = $(countVote).closest('.caption').attr('value');
+  var upVoteCount = parseInt(countVote.next('.count').text().replace("+",""));
+  $.ajax({
+    url: '/caption/' + id + '/up-vote', 
+    type: 'PUT',
+    success: function() {
+      upVoteCount = '+' + (upVoteCount + 1)
+      countVote.next('.count').html(upVoteCount)
+      countVote.css('background-color', 'yellow').animate({backgroundColor: '#90EE90'}, 1000);
+    }
   });
-});
+};
 
-$(function() {
-  $('.down-vote .arrow').click(function(e) {
-    e.preventDefault();
-    var id = $(this).closest('.caption').attr('value');
-    var downVote = $(this)
-    var downVoteCount = parseInt(downVote.next('.count').text().replace("-",""));
-    $.ajax({
-      url: '/caption/' + id + '/down-vote', 
-      type: 'PUT',
-      success: function() {
-        downVoteCount = '-' + (downVoteCount + 1)
-        downVote.next('.count').html(downVoteCount)
-        downVote.css('background-color', 'red').animate({backgroundColor: '#FFA07A'}, 1000);
-      }
-    });
+// Log the down vote and update the vote count asynchronously.
+var downVote = function(countVote) {
+  var id = countVote.closest('.caption').attr('value');
+  var downVoteCount = parseInt(countVote.next('.count').text().replace("-",""));
+  $.ajax({
+    url: '/caption/' + id + '/down-vote', 
+    type: 'PUT',
+    success: function() {
+      downVoteCount = '-' + (downVoteCount + 1)
+      countVote.next('.count').html(downVoteCount)
+      countVote.css('background-color', 'red').animate({backgroundColor: '#FFA07A'}, 1000);
+    }
   });
-});
+};
+
+// Click handler to prevent same caption from being voted on twice (at least until page is refreshed).
+$(function() {
+  $('.vote').on('click', '.votable', function(e) {
+    e.preventDefault();
+    $(this).closest('.vote').find('.votable').removeClass('votable');
+    var countVote = $(this);
+    if (countVote.parent('.up-vote').length > 0) {
+      upVote(countVote);
+    }
+    else {
+      downVote(countVote);
+    }
+  });
+})
+
+
 
 // Load function works, but loads via POST, should load via GET
 // $(function() {

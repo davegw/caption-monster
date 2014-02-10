@@ -28,7 +28,6 @@ table {
 .up-vote, 
 .down-vote {
   display: inline-block;
-  cursor: pointer;
   img {
     padding: 3px;
     width: 20px;
@@ -42,7 +41,8 @@ table {
   }
 }
 
-.up-vote .arrow {
+.up-vote .arrow.votable {
+  cursor: pointer;
   &:hover {
     background-color: #90EE90;
   }
@@ -50,7 +50,10 @@ table {
 
 .down-vote .arrow {
   margin-left: 20px;
-  &:hover {
-    background-color: red;
+  &.votable{
+    cursor: pointer;
+    &:hover {
+      background-color: red;
+    }
   }
 }
