@@ -2,6 +2,8 @@
   = @entry.title
 .date
   Created #{pretty_date(@entry.created_at)} #{pretty_time(@entry.created_at)}
+%h3.delete
+  = link_to 'Delete', entry_url(@entry.id), :method => :delete
 .image
   = image_tag @entry.photo.url(:medium)
 

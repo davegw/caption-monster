@@ -9,6 +9,12 @@ class EntriesController < ApplicationController
     redirect_to show_entry_path(@entry.id)
   end
 
+  def destroy
+    @entry = Entry.find(params[:id])
+    @entry.destroy
+    redirect_to entries_index_path
+  end
+
   def index
     @entries = Entry.all(:order => "created_at DESC", :limit => 10)
   end

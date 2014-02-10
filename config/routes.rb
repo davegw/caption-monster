@@ -1,8 +1,8 @@
 Caption::Application.routes.draw do
   root 'entries#new'
 
-  resources :entries, :only => [:create]
-  match '/entry' => 'entries#new', :via => :get, :as => :entry
+  resources :entries, :only => [:create, :destroy]
+  match '/entry' => 'entries#new', :via => :get, :as => :new_entry
   match '/entry/index' => 'entries#index', :via => :get, :as => :entries_index
   match '/entry/:id' => 'entries#show', :via => :get, :as => :show_entry
 

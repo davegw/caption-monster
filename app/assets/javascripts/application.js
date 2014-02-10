@@ -46,7 +46,7 @@ var downVote = function(countVote) {
     success: function() {
       downVoteCount = '-' + (downVoteCount + 1)
       countVote.next('.count').html(downVoteCount)
-      countVote.css('background-color', 'red').animate({backgroundColor: '#FFA07A'}, 1000);
+      countVote.css('background-color', 'orange').animate({backgroundColor: '#FFA07A'}, 1000);
     }
   });
 };
