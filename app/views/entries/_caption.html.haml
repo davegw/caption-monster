@@ -4,12 +4,12 @@
     = pretty_date(caption.created_at)
     .vote
       .up-vote
-        .arrow{:class => ('votable' if current_user && @current_user.eligible?(caption.id))}
+        .arrow{:class => ('votable' if current_user.nil? || @current_user.eligible?(caption.id))}
           = image_tag 'up-vote.png'
         .count
           +#{caption.up_votes}
       .down-vote
-        .arrow{:class => ('votable' if current_user && @current_user.eligible?(caption.id))}
+        .arrow{:class => ('votable' if current_user.nil? || @current_user.eligible?(caption.id))}
           = image_tag 'down-vote.png'
         .count
           \-#{caption.down_votes}

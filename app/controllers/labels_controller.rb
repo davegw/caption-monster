@@ -1,7 +1,8 @@
 class LabelsController < ApplicationController
   def create
     @entry_id = params[:label][:entry_id]
-    Label.create(:message => params[:label][:message], :entry_id => @entry_id)
+    user = current_user.id if current_user
+    Label.create(:message => params[:label][:message], :entry_id => @entry_id, :user_id => user)
     redirect_to show_entry_url(@entry_id)
   end
 

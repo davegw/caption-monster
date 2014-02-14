@@ -4,7 +4,8 @@ class EntriesController < ApplicationController
   end
 
   def create
-    @entry = Entry.new(:title => params[:entry][:title], :photo => params[:entry][:photo])
+    user = current_user.id if current_user
+    @entry = Entry.new(:title => params[:entry][:title], :photo => params[:entry][:photo], :user_id => user)
     @entry.save
     redirect_to show_entry_path(@entry.id)
   end
