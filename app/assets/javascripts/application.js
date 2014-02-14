@@ -52,7 +52,7 @@ var downVote = function(countVote) {
 };
 
 // Click handler to prevent same caption from being voted on twice (at least until page is refreshed).
-$(function() {
+var oneVote = function() {
   $('.vote').on('click', '.votable', function(e) {
     e.preventDefault();
     $(this).closest('.vote').find('.votable').removeClass('votable');
@@ -64,7 +64,11 @@ $(function() {
       downVote(countVote);
     }
   });
-})
+};
+
+$(function() {
+  oneVote();
+});
 
 
 
@@ -87,7 +91,8 @@ $(function() {
       {type: $(event.target).val(),
         entry_id: $('#label_entry_id').val()},
       function(response) {
-        $('#captions-here').html(response)
+        $('#captions-here').html(response);
+        oneVote();
       }
     );
   });
