@@ -28,10 +28,15 @@ var upVote = function(countVote) {
   $.ajax({
     url: '/caption/' + id + '/up-vote', 
     type: 'PUT',
-    success: function() {
-      upVoteCount = '+' + (upVoteCount + 1)
-      countVote.next('.count').html(upVoteCount)
-      countVote.css('background-color', 'yellow').animate({backgroundColor: '#90EE90'}, 1000);
+    success: function(response) {
+      if (response.success) {
+        upVoteCount = '+' + (upVoteCount + 1);
+        countVote.next('.count').html(upVoteCount);
+        countVote.css('background-color', 'yellow').animate({backgroundColor: '#90EE90'}, 1000);
+      }
+      else {
+        $('.errors').html(response.errors).show();
+      }
     }
   });
 };
@@ -43,10 +48,15 @@ var downVote = function(countVote) {
   $.ajax({
     url: '/caption/' + id + '/down-vote', 
     type: 'PUT',
-    success: function() {
-      downVoteCount = '-' + (downVoteCount + 1)
-      countVote.next('.count').html(downVoteCount)
-      countVote.css('background-color', 'orange').animate({backgroundColor: '#FFA07A'}, 1000);
+    success: function(response) {
+      if (response.success) {
+        downVoteCount = '-' + (downVoteCount + 1)
+        countVote.next('.count').html(downVoteCount)
+        countVote.css('background-color', 'orange').animate({backgroundColor: '#FFA07A'}, 1000);
+      }
+      else {
+        $('.errors').html(response.errors).show();
+      }
     }
   });
 };
@@ -55,6 +65,7 @@ var downVote = function(countVote) {
 var oneVote = function() {
   $('.vote').on('click', '.votable', function(e) {
     e.preventDefault();
+    $('.errors').hide();
     $(this).closest('.vote').find('.votable').removeClass('votable');
     var countVote = $(this);
     if (countVote.parent('.up-vote').length > 0) {

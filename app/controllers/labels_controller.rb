@@ -10,17 +10,31 @@ class LabelsController < ApplicationController
   end
 
   def up_vote
-    @label = Label.find(params[:id])
-    @label.up_votes = @label.up_votes + 1
-    @label.save
-    render :json => { :success => true }
+    errors = []
+    if current_user && Vote.where(:user_id => current_user.id, :label_id => params[:id]).any?
+      errors = "Already voted on this caption"
+    else
+      @label = Label.find(params[:id])
+      @label.up_votes = @label.up_votes + 1
+      @label.save
+      user = current_user.id if current_user
+      Vote.log_vote(VoteResult::UP, @label.id, user)
+    end
+    render :json => { :success => errors.empty?, :errors => errors }
   end
 
   def down_vote
-    @label = Label.find(params[:id])
-    @label.down_votes = @label.down_votes + 1
-    @label.save
-    render :json => { :success => true }
+    errors = []
+    if current_user && Vote.where(:user_id => current_user.id, :label_id => params[:id]).any?
+      errors = "Already voted on this caption"
+    else
+      @label = Label.find(params[:id])
+      @label.down_votes = @label.down_votes + 1
+      @label.save
+      user = current_user.id if current_user
+      Vote.log_vote(VoteResult::DOWN, @label.id, user)
+    end
+    render :json => { :success => errors.empty?, :errors => errors }
   end
 
 end

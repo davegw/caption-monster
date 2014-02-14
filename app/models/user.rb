@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :entries
   has_many :labels
+  has_many :votes
 
   attr_accessor :password
   before_save :encrypt_password
@@ -27,5 +28,9 @@ class User < ActiveRecord::Base
     else
       nil
     end
+  end
+
+  def eligible?(label)
+    !Vote.has_voted?(self.id, label)
   end
 end
