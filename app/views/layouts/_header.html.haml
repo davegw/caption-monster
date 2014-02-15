@@ -1,0 +1,13 @@
+#header_container
+  %ul
+    %li
+      = link_to "Home", root_url
+    %li 
+      = link_to "Recent", entries_index_path
+    %li
+      - if current_user
+        = @current_user.name
+        = link_to "Log Out", log_out_path
+      - else
+        = link_to "Sign Up", sign_up_path
+        = link_to "Log In", log_in_path

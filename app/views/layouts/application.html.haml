@@ -3,25 +3,25 @@
   %head
     -# Meta tags
     = render 'layouts/metas'
-
-    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    - # Bootstrap stylesheet included in application.
+    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js'
     = csrf_meta_tags
 
   %body
-    = javascript_include_tag "application", "data-turbolinks-track" => true
-    = javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js'
-    #home
-      %h3 
-        = link_to "Home", root_path
-    #user_nav
-      - if current_user
-        Logged in as #{@current_user.email}
-        = link_to "Log out", log_out_path
-      - else
-        = link_to "Sign up", sign_up_path
-        or
-        = link_to "Log in", log_in_path
-    - flash.each do |name, msg|
-      .div{:id => "flash#{name}", :class => "flash"}
-        = msg
-    = yield
+    #header
+      = render 'layouts/header'
+      #main
+        #user_nav
+          - if current_user
+            Logged in as #{@current_user.email}
+            = link_to "Log out", log_out_path
+          - else
+            = link_to "Sign up", sign_up_path
+            or
+            = link_to "Log in", log_in_path
+        - flash.each do |name, msg|
+          .div{:id => "flash#{name}", :class => "flash"}
+            = msg
+        = yield
