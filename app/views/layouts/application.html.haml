@@ -10,18 +10,18 @@
     = csrf_meta_tags
 
   %body
-    #header
-      = render 'layouts/header'
-      #main
-        #user_nav
-          - if current_user
-            Logged in as #{@current_user.email}
-            = link_to "Log out", log_out_path
-          - else
-            = link_to "Sign up", sign_up_path
-            or
-            = link_to "Log in", log_in_path
-        - flash.each do |name, msg|
-          .div{:id => "flash#{name}", :class => "flash"}
-            = msg
-        = yield
+    / #header
+    /   = render 'layouts/header'
+    #main
+      #user_nav
+        - if current_user
+          Logged in as #{@current_user.email}
+          = link_to "Log out", log_out_path
+        - else
+          = link_to "Sign up", sign_up_path
+          or
+          = link_to "Log in", log_in_path
+      - flash.each do |name, msg|
+        .div{:id => "flash#{name}", :class => "flash"}
+          = msg
+      = yield
