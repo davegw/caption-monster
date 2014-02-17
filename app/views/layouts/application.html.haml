@@ -5,13 +5,13 @@
     = render 'layouts/metas'
     - # Bootstrap stylesheet included in application.
     = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
-    = javascript_include_tag "application", "data-turbolinks-track" => true
-    = javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js'
     = csrf_meta_tags
 
   %body
     / #header
     /   = render 'layouts/header'
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js'
     #main
       #user_nav
         - if current_user
