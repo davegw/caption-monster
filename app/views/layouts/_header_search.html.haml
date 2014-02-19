@@ -1,0 +1,4 @@
+= form_tag search_captions_path, :method => 'get', :class => "navbar-form navbar-left", :role => "search" do
+  .form-group
+    = text_field_tag :query, "", :class => "form-control", :placeholder => "Search captions"
+  %button.btn.btn-primary Submit

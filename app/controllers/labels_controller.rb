@@ -7,7 +7,13 @@ class LabelsController < ApplicationController
   end
 
   def index
-    @labels = Label.all(:order => "created_at DESC", :limit => 10)
+    # @labels = Label.all(:order => "created_at DESC", :limit => 10)
+    if params[:query]
+      @labels = Label.where("message like '%#{params[:query]}%'")
+      redirect_to show_entry_path(@labels.first.entry.id) if @labels.count == 1
+    else
+      @labels = Label.all(:order => "created_at DESC", :limit => 10)
+    end
   end
 
   def up_vote

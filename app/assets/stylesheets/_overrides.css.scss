@@ -1,30 +1,16 @@
-h2 {
-  color: red
+body {
+  padding-top: 50px;
 }
-
-#header {
-  position: fixed;
-  left: 0;
-  ul {
-    margin: 0;
-    padding: 0;
-    background-color: blue;
-    height: 50px;
-    font-size: 0px;
-  }
-  li {
-    height: 50px;
-    display: inline-block;
-    border: 1px solid yellow;
-    border-collapse: collapse;
-    font-size: 18px;
-  }
-}
-
 #main {
-  position: relative;
+  margin: 20px 30px;
 }
 
+h2 {
+  color: $brand-primary;
+}
+.navbar-inverse .navbar-brand{
+  color: $brand-primary;
+}
 table {
   border-collapse: collapse;
   tr {
