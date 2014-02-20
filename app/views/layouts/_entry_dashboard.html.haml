@@ -1,9 +1,3 @@
-- body_id = 'entry-index'
-%title
-  Entries | Caption Monster
-
-%h1
-  Most Recent Images
 #entry-index
   %table
     %tr
@@ -18,7 +12,7 @@
       %th
         Created At
     - @entries.each do |p|
-      %tr{:value => p.id}
+      %tr.entry-row{:value => p.id}
         %td
           = p.id
         %td
@@ -33,5 +27,3 @@
         %td
           = pretty_date(p.created_at)
           = pretty_time(p.created_at)
-
-= link_to 'Create an Image', new_entry_path

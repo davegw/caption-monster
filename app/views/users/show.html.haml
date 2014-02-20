@@ -1,13 +1,18 @@
+- body_id = 'show-caption'
+%title
+  #{@user.name}'s Account | Caption Monster
+
 #user_account
-  .name
-    Name:
+  %h2.name
     = @user.name
-  .email
-    Email:
-    = @user.email
+    %small
+      = @user.email
   .activity
-    Number of Entries:
-    = @user.entries.count
-    Number of Captions:
-    = @user.labels.count
+    %h4 
+      Number of Entries: #{@user.entries.count}
+      = link_to "View all", user_entries_path(@user.id)
+    %h4
+      Number of Captions:
+      = @user.labels.count
+      = link_to "View all", user_captions_path(@user.id) 
     

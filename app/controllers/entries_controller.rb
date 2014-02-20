@@ -36,4 +36,17 @@ class EntriesController < ApplicationController
     render :partial => "sort"
   end
 
+  def user_entries
+    @entries = Entry.find_by_user_id(params[:id])
+  end
+
+  def random
+    @entry = Entry.offset(rand(Entry.count)).first
+    redirect_to show_entry_path(@entry.id)
+  end
+
+  def popular
+    popular = Label.select("entry_id, COUNT(entry_id)").group("entry_id").order("COUNT(entry_id) DESC")
+    @entries = Entry.find(popular.map{|e|e.entry_id})
+  end
 end

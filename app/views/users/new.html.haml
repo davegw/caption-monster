@@ -1,4 +1,8 @@
-%h1 Sign Up!
+- body_id = 'sign-up'
+%title
+  Sign Up | Caption Monster
+
+%h1 Sign Up
 
 = form_for @user, :url => users_path do |u|
   - if @user.errors.any?
