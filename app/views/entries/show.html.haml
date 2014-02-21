@@ -13,17 +13,17 @@
   = image_tag @entry.photo.url(:medium)
 
 = form_for @label, :url => labels_url do |l|
-  = l.label 'message', 'Your Caption:'
-  = l.text_field :message
+  = l.label 'message', 'Caption:'
+  = l.text_area :message, :rows => 3, :class => "form-control", :placeholder => "Enter your caption"
   = l.hidden_field :entry_id, :value => @entry.id
-  = l.submit 'Enter'
+  = l.submit 'Enter', :class => ("btn btn-primary")
 
 %h2.errors
 
 #caption-container
   #sort-filter
     Sort By:
-    = select_tag(:type, options_for_sort)
+    = select_tag(:type, options_for_sort, :class => "form-control")
   #captions-here
     = render "sort"
 

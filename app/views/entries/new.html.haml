@@ -3,15 +3,10 @@
   Create Entry | Caption Monster
 
 %h1
-  Caption Monster
+  CaPTioN MoNSTeR
 
-.recent_images
-  %h3
-    = link_to 'Most recent images', entries_index_url
-
-.recent_captions
-  %h3
-    = link_to "Most recent captions", captions_index_url
+%h2
+  Create an Entry
 
 .upload_form
   = form_for @entry, :url => entries_url, :html => {:class => "nifty_form", :multipart => true } do |f|
@@ -21,6 +16,6 @@
         = f.file_field :photo
     .title
       = f.label 'title', 'Title:'
-      = f.datetime_field :title
+      = f.text_field :title, :class => "form-control"
     .submit
-      = f.submit "Create"
+      = f.submit "Create", :class => "btn btn-primary"

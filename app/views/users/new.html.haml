@@ -12,17 +12,17 @@
         - for message in @user.errors.full_messages
           %li 
             = message
-  %p
-    = u.label :name, "Username:"
-    = u.text_field :name
-  %p 
+  %p.form-group
+    = u.label :name, "User Name:"
+    = u.text_field :name, :class => "form-control"
+  %p.form-group 
     = u.label :email, "Email:"
-    = u.email_field :email
-  %p
+    = u.email_field :email, :class => "form-control"
+  %p.form-group
     = u.label :password, "Password:"
-    = u.password_field :password
-  %p
+    = u.password_field :password, :class => "form-control"
+  %p.form-group.has-error
     = u.label :password_confirmation, "Confirm:"
-    = u.password_field :password_confirmation
+    = u.password_field :password_confirmation, :class => "form-control"
   %p
-    = u.submit "Register"
+    = u.submit "Register", :class => "btn btn-primary"
