@@ -3,16 +3,18 @@
   #{@user.name}'s Account | Caption Monster
 
 #user_account
-  %h2.name
-    = @user.name
-    %small
-      = @user.email
-  .activity
-    %h4 
-      Number of Entries: #{@user.entries.count}
-      = link_to "View all", user_entries_path(@user.id)
-    %h4
-      Number of Captions:
-      = @user.labels.count
-      = link_to "View all", user_captions_path(@user.id) 
-    
+  .container
+    %h2.name
+      = @user.name
+      %small
+        = @user.email
+    .activity
+      %h4 
+        - entry_count = @user.entries.count
+        Number of Entries: #{entry_count}
+        = link_to "View all", user_entries_path(@user.id) if entry_count > 0
+      %h4
+        - label_count = @user.labels.count
+        Number of Captions: #{label_count}
+        = link_to "View all", user_captions_path(@user.id) if label_count > 0
+      

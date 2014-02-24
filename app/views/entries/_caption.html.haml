@@ -1,7 +1,10 @@
 - @captions.each do |caption|
   .caption{:value => caption.id}
-    = caption.message
-    = pretty_date(caption.created_at)
+    %h4.message
+      = caption.message
+    .user
+      = caption.user.name
+      = pretty_date(caption.created_at)
     .vote
       .up-vote
         .arrow{:class => ('votable' if current_user.nil? || @current_user.eligible?(caption.id))}

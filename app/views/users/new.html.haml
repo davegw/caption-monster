@@ -2,27 +2,29 @@
 %title
   Sign Up | Caption Monster
 
-%h1 Sign Up
+.container
+  .col-md-3
+    %h1 Sign Up
 
-= form_for @user, :url => users_path do |u|
-  - if @user.errors.any?
-    .error-messages
-      %h2 Form is invalid
-      %ul
-        - for message in @user.errors.full_messages
-          %li 
-            = message
-  %p.form-group
-    = u.label :name, "User Name:"
-    = u.text_field :name, :class => "form-control"
-  %p.form-group 
-    = u.label :email, "Email:"
-    = u.email_field :email, :class => "form-control"
-  %p.form-group
-    = u.label :password, "Password:"
-    = u.password_field :password, :class => "form-control"
-  %p.form-group.has-error
-    = u.label :password_confirmation, "Confirm:"
-    = u.password_field :password_confirmation, :class => "form-control"
-  %p
-    = u.submit "Register", :class => "btn btn-primary"
+    = form_for @user, :url => users_path do |u|
+      - if @user.errors.any?
+        .error-messages
+          %h2 Form is invalid
+          %ul
+            - for message in @user.errors.full_messages
+              %li 
+                = message
+      %p.form-group
+        = u.label :name, "User Name:"
+        = u.text_field :name, :class => "form-control"
+      %p.form-group 
+        = u.label :email, "Email:"
+        = u.email_field :email, :class => "form-control"
+      %p.form-group
+        = u.label :password, "Password:"
+        = u.password_field :password, :class => "form-control"
+      %p.form-group
+        = u.label :password_confirmation, "Confirm:"
+        = u.password_field :password_confirmation, :class => "form-control"
+      %p
+        = u.submit "Register", :class => "btn btn-primary"

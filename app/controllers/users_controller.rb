@@ -7,8 +7,11 @@ class UsersController < ApplicationController
     @user = User.new(:email => params[:user][:email], 
                      :name => params[:user][:name], 
                      :password => params[:user][:password], 
-                     :password_confirmation => params[:user][:password_confirmation])
+                     :password_confirmation => params[:user][:password_confirmation],
+                     :status_id => UserStatus::REGISTERED,
+                     :registered_at => Time.now)
     if @user.save
+      @user.transfer_unregistered!(current_user) if current_user && !current_user.registered?
       session[:user_id] = @user.id
       redirect_to show_user_url(@user.id)
     else

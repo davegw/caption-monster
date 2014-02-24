@@ -4,8 +4,13 @@ class EntriesController < ApplicationController
   end
 
   def create
-    user = current_user.id if current_user
-    @entry = Entry.new(:title => params[:entry][:title], :photo => params[:entry][:photo], :user_id => user)
+    if current_user
+      user = current_user
+    else
+      user = User.create_unregistered
+      session[:user_id] = user.id
+    end
+    @entry = Entry.new(:title => params[:entry][:title], :photo => params[:entry][:photo], :user_id => user.id)
     @entry.save
     redirect_to show_entry_path(@entry.id)
   end

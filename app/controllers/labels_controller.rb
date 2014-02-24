@@ -1,9 +1,14 @@
 class LabelsController < ApplicationController
   def create
-    @entry_id = params[:label][:entry_id]
-    user = current_user.id if current_user
-    Label.create(:message => params[:label][:message], :entry_id => @entry_id, :user_id => user)
-    redirect_to show_entry_url(@entry_id)
+    if current_user
+      user = current_user
+    else
+      user = User.create_unregistered
+      session[:user_id] = user.id
+    end
+    @label = Label.new(:message => params[:label][:message], :entry_id => params[:label][:entry_id], :user_id => user.id)
+    @label.save
+    redirect_to show_entry_url(@label.entry_id)
   end
 
   def index

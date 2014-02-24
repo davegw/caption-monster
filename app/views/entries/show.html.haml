@@ -4,6 +4,8 @@
 
 %h2.title
   = @entry.title
+.user
+  = @entry.user.name if @entry.user
 .date
   Created #{pretty_date(@entry.created_at)} #{pretty_time(@entry.created_at)}
 - if current_user && @entry.user.present? && current_user.id == @entry.user.id

@@ -31,22 +31,37 @@
               = link_to "Recent Captions", captions_index_path
       %ul.nav.navbar-nav.navbar-right
         = render 'layouts/header_search'
-        - if current_user
-          %li.dropdown
-            %a.dropdown-toggle{:href => "#", "data-toggle" => "dropdown"}
-              Account
-              .glyphicon.glyphicon-user{:style => "padding-left: 10px"}
-              %b.caret
-            %ul.dropdown-menu
-              %li.dropdown-header 
-                = current_user.email
-              %li
-                = link_to "Settings", show_user_path(@current_user.id)
-              %li
-                = link_to "Recent Activity", "#"
-              %li.divider
-              %li
-                = link_to "Log Out", log_out_path
+        - if current_user 
+          - if current_user.registered?
+            %li.dropdown
+              %a.dropdown-toggle{:href => "#", "data-toggle" => "dropdown"}
+                Account
+                .glyphicon.glyphicon-user{:style => "padding-left: 10px"}
+                %b.caret
+              %ul.dropdown-menu
+                %li.dropdown-header 
+                  = current_user.email
+                %li
+                  = link_to "Settings", show_user_path(@current_user.id)
+                %li.divider
+                %li
+                  = link_to "Log Out", log_out_path
+          - else
+            %li.dropdown
+              %a.dropdown-toggle{:href => "#", "data-toggle" => "dropdown"}
+                Register Account
+                .glyphicon.glyphicon-user{:style => "padding-left: 10px"}
+                %b.caret
+              %ul.dropdown-menu
+                %li.dropdown-header 
+                  Register #{current_user.anon_name}
+                %li
+                  = link_to "Sign Up", sign_up_path
+                %li.divider
+                %li
+                  = link_to "Activity", show_user_path(@current_user.id)
+                %li
+                  = link_to "Log Out", log_out_path
         - else
           %li
             = link_to "Log In", log_in_path
