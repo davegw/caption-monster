@@ -3,7 +3,7 @@
     %h4.message
       = caption.message
     .user
-      = caption.user.name
+      = caption.user.name if caption.user
       = pretty_date(caption.created_at)
     .vote
       .up-vote
