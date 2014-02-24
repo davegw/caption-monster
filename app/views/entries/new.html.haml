@@ -2,20 +2,19 @@
 %title
   Create Entry | Caption Monster
 
-%h1
-  CaPTioN MoNSTeR
+.container
+  .col-md-6
+    %h1
+      Create an Entry
 
-%h2
-  Create an Entry
-
-.upload_form
-  = form_for @entry, :url => entries_url, :html => {:class => "nifty_form", :multipart => true } do |f|
-    .upload
-      = f.label 'photo', 'Upload your photo:'
-      .file
-        = f.file_field :photo
-    .title
-      = f.label 'title', 'Title:'
-      = f.text_field :title, :class => "form-control"
-    .submit
-      = f.submit "Create", :class => "btn btn-primary"
+    .upload_form
+      = form_for @entry, :url => entries_url, :html => {:class => "nifty-form", :multipart => true } do |f|
+        .upload.form-group
+          = f.label 'photo', 'Upload your photo:'
+          = f.file_field :photo
+          %p.help-block Select an image to upload.
+        .title.form-group
+          = f.label 'title', 'Title:'
+          = f.text_field :title, :class => "form-control"
+        .submit
+          = f.submit "Create", :class => "btn btn-primary form"

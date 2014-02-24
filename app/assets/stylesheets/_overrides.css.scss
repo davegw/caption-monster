@@ -3,27 +3,21 @@ body {
 }
 
 #main {
-  margin: 20px 30px;
+  margin: 20px 0;
 }
 
-h2 {
-  color: $brand-primary;
-}
 .navbar-inverse .navbar-brand{
   color: $brand-primary;
 }
 table {
-  border-collapse: collapse;
+  // border-collapse: collapse;
+  border: 1px solid $table-border-color;
   tr {
-    &:hover {
-      background-color: yellow;
+    &:hover.row-entry {
       cursor: pointer;
     }
-    td {
-      padding: 5px;
-    }
-    .thumbnail img{
-      width: 50px;
+    img{
+      width: 200px;
     }
   }
 }

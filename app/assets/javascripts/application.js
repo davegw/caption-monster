@@ -14,7 +14,7 @@
 //= require jquery_ujs
 //= require_tree .
 $(function() {
-  $('tr').click(function(e) {
+  $('tr.row-entry').click(function(e) {
     e.preventDefault();
     window.location.href = '/entry/' + $(this).attr("value")
   });
