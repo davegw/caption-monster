@@ -2,6 +2,8 @@
 %title
   #{current_user.name}'s Captions | Caption Monster
 
-%h1
-  #{current_user.name}'s Captions
-= render 'layouts/caption_dashboard'
+.container
+  .row
+    %h1
+      #{current_user.name}'s Captions
+    = render 'layouts/caption_dashboard'

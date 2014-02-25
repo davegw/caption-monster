@@ -11,6 +11,7 @@ Caption::Application.routes.draw do
 
   resources :labels, :only => [:create]
   match '/caption/index' => 'labels#index', :via => :get, :as => :captions_index
+  match '/caption/new/:id' => 'labels#new', :via => :get, :as => :new_caption
   match '/caption/:id/up-vote' => 'labels#up_vote', :via => :put, :as => :up_vote
   match '/caption/:id/down-vote' => 'labels#down_vote', :via => :put, :as => :down_vote
   match '/caption/sort' => 'entries#sort', :via => :get, :as => :sort_captions

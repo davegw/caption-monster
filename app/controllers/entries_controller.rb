@@ -51,7 +51,7 @@ class EntriesController < ApplicationController
   end
 
   def popular
-    popular = Label.select("entry_id, COUNT(entry_id)").group("entry_id").order("COUNT(entry_id) DESC")
+    popular = Label.select("entry_id, COUNT(entry_id)").group("entry_id").order("COUNT(entry_id) DESC").limit(10)
     @entries = Entry.find(popular.map{|e|e.entry_id})
   end
 end

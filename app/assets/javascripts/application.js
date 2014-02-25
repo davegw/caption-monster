@@ -14,7 +14,7 @@
 //= require jquery_ujs
 //= require_tree .
 $(function() {
-  $('tr.row-entry').click(function(e) {
+  $('tr.row-entry, tr.row-caption, .popular-entry').click(function(e) {
     e.preventDefault();
     window.location.href = '/entry/' + $(this).attr("value")
   });
@@ -22,7 +22,7 @@ $(function() {
 
 // Log the up vote and update the vote count asynchronously.
 var upVote = function(countVote) {
-  var id = $(countVote).closest('.caption').attr('value');
+  var id = $(countVote).closest('.caption-container').attr('value');
   var upVoteCount = parseInt(countVote.next('.count').text().replace("+",""));
   $.ajax({
     url: '/caption/' + id + '/up-vote', 
@@ -42,7 +42,7 @@ var upVote = function(countVote) {
 
 // Log the down vote and update the vote count asynchronously.
 var downVote = function(countVote) {
-  var id = countVote.closest('.caption').attr('value');
+  var id = countVote.closest('.caption-container').attr('value');
   var downVoteCount = parseInt(countVote.next('.count').text().replace("-",""));
   $.ajax({
     url: '/caption/' + id + '/down-vote', 

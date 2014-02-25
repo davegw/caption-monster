@@ -1,5 +1,5 @@
 #entry-index
-  %table
+  %table.table.table-striped.table-hover
     %tr
       %th
         ID
@@ -12,13 +12,13 @@
       %th
         Created At
     - @entries.each do |p|
-      %tr.entry-row{:value => p.id}
+      %tr.row-entry{:value => p.id}
         %td
           = p.id
         %td
           = p.title
-        %td.thumbnail
-          = image_tag p.photo.url(:thumb)
+        %td.photo
+          = image_tag p.photo.url(:medium)
         %td
           - if p.photo_file_name
             = p.photo_file_name

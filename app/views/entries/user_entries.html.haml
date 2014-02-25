@@ -2,6 +2,9 @@
 %title
   #{current_user.name}'s Entries | Caption Monster
 
-%h1
-  #{current_user.name}'s Entries
-= render 'layouts/entry_dashboard'
+.container
+  .row
+  %h1
+    #{current_user.name}'s Entries
+  = render 'layouts/entry_dashboard'
+  

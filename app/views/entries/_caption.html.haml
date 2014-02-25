@@ -1,19 +1,22 @@
 - @captions.each do |caption|
-  .caption{:value => caption.id}
-    %h4.message
-      = caption.message
-    .user
-      = caption.user.name if caption.user
-      = pretty_date(caption.created_at)
-    .vote
-      .up-vote
-        .arrow{:class => ('votable' if current_user.nil? || @current_user.eligible?(caption.id))}
-          = image_tag 'up-vote.png'
-        .count
-          +#{caption.up_votes}
-      .down-vote
-        .arrow{:class => ('votable' if current_user.nil? || @current_user.eligible?(caption.id))}
-          = image_tag 'down-vote.png'
-        .count
-          \-#{caption.down_votes}
-          
+  .row.caption-container{:value => caption.id}
+    .col-md-6
+      .caption-message.well
+        %h4.message
+          = caption.message
+        %small.user-name
+          = caption.user.name if caption.user
+        %small.date
+          #{pretty_date(caption.created_at)} at #{pretty_time(caption.created_at)}
+        .vote
+          .up-vote
+            .arrow{:class => ('votable' if current_user.nil? || @current_user.eligible?(caption.id))}
+              = image_tag 'up-vote.png'
+            .count
+              +#{caption.up_votes}
+          .down-vote
+            .arrow{:class => ('votable' if current_user.nil? || @current_user.eligible?(caption.id))}
+              = image_tag 'down-vote.png'
+            .count
+              \-#{caption.down_votes}
+              

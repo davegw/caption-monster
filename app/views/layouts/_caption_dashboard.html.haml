@@ -1,5 +1,5 @@
 #caption-index
-  %table
+  %table.table.table-striped.table-hover
     %tr
       %th
         ID
@@ -10,11 +10,11 @@
       %th
         Created At
     - @labels.each do |label|
-      %tr{:value => label.entry.id}
+      %tr.row-caption{:value => label.entry.id}
         %td
           = label.entry.id
-        %td.thumbnail
-          = image_tag label.entry.photo.url(:thumb)
+        %td.photo
+          = image_tag label.entry.photo.url(:medium)
         %td
           = label.message
         %td

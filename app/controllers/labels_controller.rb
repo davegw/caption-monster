@@ -11,6 +11,11 @@ class LabelsController < ApplicationController
     redirect_to show_entry_url(@label.entry_id)
   end
 
+  def new
+    @entry = Entry.find(params[:id])
+    @label = Label.new
+  end
+
   def index
     # @labels = Label.all(:order => "created_at DESC", :limit => 10)
     if params[:query]

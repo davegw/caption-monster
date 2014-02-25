@@ -2,36 +2,38 @@
 %title
   Captions | Caption Monster
 
-- if request.path == '/caption/index'
-  %h1
-    Most Recent Captions:
-- else
-  %h1
-    Search Results:
-#caption-index
-  - if @labels.count > 0
-    %table
-      %tr
-        %th
-          ID
-        %th
-          Image
-        %th
-          Caption
-        %th
-          Created At
-      - @labels.each do |label|
-        %tr{:value => label.entry.id}
-          %td
-            = label.entry.id
-          %td.thumbnail
-            = image_tag label.entry.photo.url(:thumb)
-          %td
-            = label.message
-          %td
-            = pretty_date(label.created_at)
-            = pretty_time(label.created_at)
-  - else
-    %h3 No results found.
+.container
+  .row
+    - if request.path == '/caption/index'
+      %h1
+        Most Recent Captions:
+    - else
+      %h1
+        Search Results:
+    #caption-index
+      - if @labels.count > 0
+        %table.table.table-striped.table-hover
+          %tr
+            %th
+              ID
+            %th
+              Image
+            %th
+              Caption
+            %th
+              Created At
+          - @labels.each do |label|
+            %tr.row-caption{:value => label.entry.id}
+              %td
+                = label.entry.id
+              %td.photo
+                = image_tag label.entry.photo.url(:medium)
+              %td
+                = label.message
+              %td
+                = pretty_date(label.created_at)
+                = pretty_time(label.created_at)
+      - else
+        %h3 No results found.
 
-= link_to 'Create an Image', new_entry_path
+    = link_to 'Create an Image', new_entry_path
