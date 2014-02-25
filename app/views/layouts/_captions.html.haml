@@ -1,0 +1,26 @@
+- @captions.each do |caption|
+  .row.caption-container{:value => caption.id}
+    .col-xs-12
+      .caption-message.well
+        .message
+          = caption.message
+        .row
+          .col-md-6
+            %small.user-name
+              = caption.user.name if caption.user
+          .col-md-6
+            %small.date
+              #{pretty_date(caption.created_at)} #{pretty_time(caption.created_at)}
+        .row
+          .col-xs-12
+            .vote
+              .up-vote
+                .arrow{:class => ('votable' if current_user.nil? || @current_user.eligible?(caption.id))}
+                  = image_tag 'up-vote.png'
+                .count
+                  +#{caption.up_votes}
+              .down-vote
+                .arrow{:class => ('votable' if current_user.nil? || @current_user.eligible?(caption.id))}
+                  = image_tag 'down-vote.png'
+                .count
+                  \-#{caption.down_votes}

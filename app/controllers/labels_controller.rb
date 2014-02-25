@@ -8,7 +8,7 @@ class LabelsController < ApplicationController
     end
     @label = Label.new(:message => params[:label][:message], :entry_id => params[:label][:entry_id], :user_id => user.id)
     @label.save
-    redirect_to show_entry_url(@label.entry_id)
+    redirect_to show_caption_url(@label.id)
   end
 
   def new

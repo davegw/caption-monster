@@ -61,8 +61,11 @@ table {
 #show-entry-container,
 #new-caption-container,
 #view-caption-container {
-  .entry-image img {
-    width: 50%;
+  .entry-image {
+    display: inline-block;
+    img {
+      width: 100%;
+    }
   }
   .caption-message {
     .message {
@@ -70,19 +73,6 @@ table {
     }
     small {
       display: block;
-    }
-    .user-name,
-    .date {
-      font-style: italic;
-    }
-  }
-}
-
-#new-caption-container {
-  .entry-image {
-    display: inline-block;
-    img {
-      width: 100%;
     }
   }
   .user-info {
@@ -95,19 +85,20 @@ table {
     display: inline-block;
     float: right;
   }
+  .user-name,
+  .date {
+    font-style: italic;
+  }
 }
 
 body#show-caption {
   background-color: black;
 }
+
 #view-caption-container {
-  .entry-image {
-    img {
-      width: 100%;
-    }
-  }
   .message.panel-body {
     font-size: 18px;
+    text-align: center;
   }
 }
 
@@ -119,10 +110,6 @@ body#show-caption {
 
 #sort-filter {
   margin-bottom: 20px;
-}
-
-.caption-container {
-  margin-bottom: 30px;
 }
 
 .vote {

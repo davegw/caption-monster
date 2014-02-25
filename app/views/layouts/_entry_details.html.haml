@@ -10,23 +10,20 @@
           .user-name
             = @entry.user.name if @entry.user
           .date
-            Created #{pretty_date(@entry.created_at)} #{pretty_time(@entry.created_at)}
-
-  
+            #{pretty_date(@entry.created_at)} #{pretty_time(@entry.created_at)}
     .col-md-4
-     
-
       .list-group
-        %a.list-group-item#show-caption-form{:href => '#'}
+        %a.list-group-item.show-caption-form{:href => '#'}
           Create Caption
           .caret
+        %li.list-group-item.show-caption-form{:style => 'display:none'}
           = form_for @label, :url => labels_url do |l|
-            #caption-form{:style => "display: none"}
-              %p.form-group
-                = l.text_area :message, :rows => 3, :class => "form-control", :placeholder => "Enter your caption"
-              = l.hidden_field :entry_id, :value => @entry.id
-              %p
-                = l.submit 'Enter', :class => "btn btn-primary"
+            %p.form-group
+              = l.label 'message', 'Create a Caption:'
+              = l.text_area :message, :rows => 3, :class => "form-control", :placeholder => "Enter your caption"
+            = l.hidden_field :entry_id, :value => @entry.id
+            %p
+              = l.submit 'Enter', :class => "btn btn-primary"
         %a.list-group-item{:href => user_entries_path(@entry.user.id)}
           %span.badge 
             = Entry.where(:user_id => @entry.user.id).count
@@ -37,43 +34,41 @@
           Show Captions
           .caret
         %li.list-group-item.show-captions{:href => '#', :style => "display: none"}
-          %span.badge
-            = @entry.labels.count
-          Hide Captions
-          .caret.caret-up
           #caption-container
             .row
               .col-md-6
+                = label_tag 'Captions:'
                 #sort-filter
                   Sort By:
                   = select_tag(:type, options_for_sort, :class => "form-control")
             #captions-here
-              - @captions ||= Label.where(:entry_id => @entry.id).order("created_at DESC")
-              - @captions.each do |caption|
-                .row.caption-container{:value => caption.id}
-                  .col-xs-12
-                    .caption-message.well
-                      %h4.message
-                        = caption.message
-                      .row
-                        .col-md-6
-                          %small.user-name
-                            = caption.user.name if caption.user
-                        .col-md-6
-                          %small.date
-                            #{pretty_date(caption.created_at)} #{pretty_time(caption.created_at)}
-                      .row
-                        .col-xs-12
-                          .vote
-                            .up-vote
-                              .arrow{:class => ('votable' if current_user.nil? || @current_user.eligible?(caption.id))}
-                                = image_tag 'up-vote.png'
-                              .count
-                                +#{caption.up_votes}
-                            .down-vote
-                              .arrow{:class => ('votable' if current_user.nil? || @current_user.eligible?(caption.id))}
-                                = image_tag 'down-vote.png'
-                              .count
-                                \-#{caption.down_votes}
+              = render "layouts/sort"
+              / - @captions ||= Label.where(:entry_id => @entry.id).order("created_at DESC")
+              / - @captions.each do |caption|
+              /   .row.caption-container{:value => caption.id}
+              /     .col-xs-12
+              /       .caption-message.well
+              /         .message
+              /           = caption.message
+              /         .row
+              /           .col-md-6
+              /             %small.user-name
+              /               = caption.user.name if caption.user
+              /           .col-md-6
+              /             %small.date
+              /               #{pretty_date(caption.created_at)} #{pretty_time(caption.created_at)}
+              /         .row
+              /           .col-xs-12
+              /             .vote
+              /               .up-vote
+              /                 .arrow{:class => ('votable' if current_user.nil? || @current_user.eligible?(caption.id))}
+              /                   = image_tag 'up-vote.png'
+              /                 .count
+              /                   +#{caption.up_votes}
+              /               .down-vote
+              /                 .arrow{:class => ('votable' if current_user.nil? || @current_user.eligible?(caption.id))}
+              /                   = image_tag 'down-vote.png'
+              /                 .count
+              /                   \-#{caption.down_votes}
 
 

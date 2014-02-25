@@ -4,37 +4,4 @@
 
 #new-caption-container
   = render "layouts/entry_details"
-  / .container
-  /   .row
-  /     .col-md-8
-  /       - if current_user && @entry.user.present? && current_user.id == @entry.user.id
-  /         %h3.delete
-  /           = link_to 'Delete', entry_url(@entry.id), :method => :delete
-  /       .entry-image
-  /         = image_tag @entry.photo.url
-  /         .user-info
-  /           .user-name
-  /             = @entry.user.name if @entry.user
-  /           .date
-  /             Created #{pretty_date(@entry.created_at)} #{pretty_time(@entry.created_at)}
-
-    
-  /     .col-md-4
-  /       = form_for @label, :url => labels_url do |l|
-  /         %p.form-group
-  /           = l.label 'message', 'Create Your Caption:'
-  /           = l.text_area :message, :rows => 3, :class => "form-control", :placeholder => "Enter caption"
-  /         = l.hidden_field :entry_id, :value => @entry.id
-  /         %p
-  /           = l.submit 'Enter', :class => "btn btn-primary"
-
-  /       .list-group
-  /         %a.list-group-item{:href => root_path}
-  /           %span.badge
-  /             = @entry.labels.count
-  /           Show Captions
-  /           .caret
-  /         %a.list-group-item{:href => user_entries_path(@entry.user.id)}
-  /           %span.badge 
-  /             = Entry.where(:user_id => @entry.user.id).count
-  /           More Entries from #{@entry.user.name}
+  

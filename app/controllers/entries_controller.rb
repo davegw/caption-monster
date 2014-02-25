@@ -38,7 +38,7 @@ class EntriesController < ApplicationController
     else
       @captions = Label.where(:entry_id => @entry.id).order("#{@type}  DESC")
     end
-    render :partial => "sort"
+    render :partial => "layouts/sort"
   end
 
   def user_entries
@@ -47,7 +47,7 @@ class EntriesController < ApplicationController
 
   def random
     @entry = Entry.offset(rand(Entry.count)).first
-    redirect_to show_entry_path(@entry.id)
+    redirect_to new_caption_path(@entry.id)
   end
 
   def popular

@@ -2,37 +2,5 @@
 %title
   View Entry | Caption Monster
 
-.container#show-entry-container
-  %h2.title
-    = @entry.title
-  .user
-    = @entry.user.name if @entry.user
-  .date
-    Created #{pretty_date(@entry.created_at)} #{pretty_time(@entry.created_at)}
-  - if current_user && @entry.user.present? && current_user.id == @entry.user.id
-    %h3.delete
-      = link_to 'Delete', entry_url(@entry.id), :method => :delete
-  .entry-image
-    = image_tag @entry.photo.url
-
-  .row
-    .col-md-6
-      = form_for @label, :url => labels_url do |l|
-        %p.form-group
-          = l.label 'message', 'Caption:'
-          = l.text_area :message, :rows => 3, :class => "form-control", :placeholder => "Enter your caption"
-        = l.hidden_field :entry_id, :value => @entry.id
-        %p
-          = l.submit 'Enter', :class => "btn btn-primary"
-
-  %h2.errors
-
-  #caption-container
-    .row
-      .col-md-2
-        #sort-filter
-          Sort By:
-          = select_tag(:type, options_for_sort, :class => "form-control")
-    #captions-here
-      = render "sort"
-
+#show-entry-container
+  = render "layouts/entry_details"

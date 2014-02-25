@@ -1,0 +1,2 @@
+- @captions ||= Label.where(:entry_id => @entry.id).order("created_at DESC")
+= render 'layouts/captions'
