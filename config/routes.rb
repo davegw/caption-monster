@@ -17,6 +17,7 @@ Caption::Application.routes.draw do
   match '/caption/sort' => 'entries#sort', :via => :get, :as => :sort_captions
   match '/caption/search' => 'labels#index', :via => :get, :as => :search_captions
   match '/caption/user/:id' => 'labels#user_captions', :via => :get, :as => :user_captions
+  match '/caption/view/:id' => 'labels#show', :via => :get, :as => :show_caption
 
   resources :users, :only => [:create]
   match '/user/sign-up' => 'users#new', :via => :get, :as => :sign_up

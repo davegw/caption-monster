@@ -58,8 +58,9 @@ table {
   color: red
 }
 
-#show-entry,
-#new-caption {
+#show-entry-container,
+#new-caption-container,
+#view-caption-container {
   .entry-image img {
     width: 50%;
   }
@@ -77,7 +78,7 @@ table {
   }
 }
 
-#new-caption {
+#new-caption-container {
   .entry-image {
     display: inline-block;
     img {
@@ -94,6 +95,26 @@ table {
     display: inline-block;
     float: right;
   }
+}
+
+body#show-caption {
+  background-color: black;
+}
+#view-caption-container {
+  .entry-image {
+    img {
+      width: 100%;
+    }
+  }
+  .message.panel-body {
+    font-size: 18px;
+  }
+}
+
+.caret.caret-up {
+  border-top: 0;
+  border-bottom: $caret-width-base solid;
+  content: "";
 }
 
 #sort-filter {

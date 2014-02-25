@@ -27,6 +27,11 @@ class LabelsController < ApplicationController
     end
   end
 
+  def show
+    @label = Label.find(params[:id])
+    @entry = Entry.find(@label.entry.id)
+  end
+
   def user_captions
     @labels = Label.find_by_user_id(params[:id])
   end

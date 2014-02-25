@@ -107,3 +107,16 @@ $(function() {
     );
   });
 });
+
+$(function() {
+  $('#caption-container').hide();
+  $('.list-group-item.show-captions').click(function(event) {
+    $('#caption-container, .list-group-item.show-captions').toggle();
+  })
+})
+
+$(function() {
+  $('.list-group-item#show-caption-form').click(function(event) {
+    $('.list-group-item #caption-form').show();
+  })
+})

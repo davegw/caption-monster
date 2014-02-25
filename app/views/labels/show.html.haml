@@ -1,0 +1,22 @@
+- @body_id = 'show-caption'
+%title
+  View Caption | Caption Monster
+
+.container#view-caption-container
+  .row
+    .col-md-6.col-md-offset-3
+      / - if current_user && @entry.user.present? && current_user.id == @entry.user.id
+      /   %h3.delete
+      /     = link_to 'Delete', entry_url(@entry.id), :method => :delete
+      .entry-image
+        = image_tag @entry.photo.url
+      .caption-message.panel.panel-default
+        .message.panel-body
+          = @label.message
+  .row
+    .col-xs-5.col-md-2.col-md-offset-3
+      %a.btn.btn-primary{:href => show_entry_path(@entry.id)}
+        Caption Options
+    .col-xs-5.col-md-2.col-xs-offset-2.col-md-offset-2
+      %a.btn.btn-primary{:href => random_entry_path, :style => "float:right" }
+        Create Next Caption
