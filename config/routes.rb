@@ -1,5 +1,5 @@
 Caption::Application.routes.draw do
-  root 'entries#new'
+  root 'entries#random'
 
   resources :entries, :only => [:create, :destroy]
   match '/entry/new' => 'entries#new', :via => :get, :as => :new_entry

@@ -12,7 +12,7 @@
     .collapse.navbar-collapse#bs-example-navbar-collapse-1
       %ul.nav.navbar-nav
         %li{:class => "#{active_class('entry/new')}"}
-          = link_to "Create New Entry", new_entry_path
+          = link_to "Create Entry", new_entry_path
         %li{:class => "#{active_class('entry/index')}"}
           %a{:href => entries_index_path} Recent Entries
         %li.dropdown
