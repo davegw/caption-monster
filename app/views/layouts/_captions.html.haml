@@ -12,7 +12,7 @@
             %small.date
               #{pretty_date(caption.created_at)} #{pretty_time(caption.created_at)}
         .row
-          .col-xs-12
+          .col-xs-8
             .vote
               .up-vote
                 .arrow{:class => ('votable' if current_user.nil? || @current_user.eligible?(caption.id))}
@@ -24,3 +24,5 @@
                   = image_tag 'down-vote.png'
                 .count
                   \-#{caption.down_votes}
+          .col-xs-4
+            = link_to "View", show_caption_path(caption.id), :style => ("float:right")

@@ -10,9 +10,9 @@
       /     = link_to 'Delete', entry_url(@entry.id), :method => :delete
       .entry-image
         = image_tag @entry.photo.url
-      .caption-message.panel.panel-default
-        .message.panel-body
-          = @label.message
+        .caption-message.panel.panel-default
+          .message.panel-body
+            = @label.message
   .row
     .col-xs-5.col-md-2.col-md-offset-3
       %a.btn.btn-primary{:href => show_entry_path(@entry.id)}

@@ -96,9 +96,13 @@ body#show-caption {
 }
 
 #view-caption-container {
+  .entry-image {
+    width: 100%;
+  }
   .message.panel-body {
     font-size: 18px;
     text-align: center;
+    margin: 0;
   }
 }
 
