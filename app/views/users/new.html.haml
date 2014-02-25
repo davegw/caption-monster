@@ -3,28 +3,31 @@
   Sign Up | Caption Monster
 
 .container
-  .col-md-3
-    %h1 Sign Up
-
-    = form_for @user, :url => users_path do |u|
+  .row
+    .col-xs-4
+      %h1 
+        Sign Up
       - if @user.errors.any?
         .error-messages
-          %h2 Form is invalid
-          %ul
+          %h3 Could not register new user:
+          %ul.list-group
             - for message in @user.errors.full_messages
-              %li 
+              %li.list-group-item.list-group-item-danger
                 = message
-      %p.form-group
-        = u.label :name, "User Name:"
-        = u.text_field :name, :class => "form-control"
-      %p.form-group 
-        = u.label :email, "Email:"
-        = u.email_field :email, :class => "form-control"
-      %p.form-group
-        = u.label :password, "Password:"
-        = u.password_field :password, :class => "form-control"
-      %p.form-group
-        = u.label :password_confirmation, "Confirm:"
-        = u.password_field :password_confirmation, :class => "form-control"
-      %p
-        = u.submit "Register", :class => "btn btn-primary"
+  .row
+    .col-md-3
+      = form_for @user, :url => users_path do |u|
+        %p.form-group
+          = u.label :name, "User Name:", :class => "control-label"
+          = u.text_field :name, :class => "form-control"
+        %p.form-group 
+          = u.label :email, "Email:", :class => "control-label"
+          = u.email_field :email, :class => "form-control"
+        %p.form-group
+          = u.label :password, "Password:", :class => "control-label"
+          = u.password_field :password, :class => "form-control"
+        %p.form-group
+          = u.label :password_confirmation, "Confirm:", :class => "control-label"
+          = u.password_field :password_confirmation, :class => "form-control"
+        %p
+          = u.submit "Register", :class => "btn btn-primary"

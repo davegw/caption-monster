@@ -2,6 +2,10 @@ body {
   padding-top: 50px;
 }
 
+.error-messages {
+  color: $state-danger-text;
+}
+
 #main {
   margin: 20px 0;
 }
@@ -40,16 +44,6 @@ table {
   }
   img {
     width: 90%;
-  }
-}
-
-.field_with_errors {
-  display: inline-block;
-  label {
-    background-color: red;
-  }
-  input {
-    border: 3px solid red;
   }
 }
 
