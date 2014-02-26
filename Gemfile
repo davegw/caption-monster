@@ -48,4 +48,5 @@ gem 'bcrypt-ruby', require: 'bcrypt'
 gem 'rails_12factor', group: :production
 gem 'haml'
 gem 'paperclip', '~> 4.1.0'
+gem 'rmagick'
 gem 'aws-sdk'
