@@ -17,9 +17,11 @@
           Create Caption
           .caret
         %li.list-group-item.show-caption-form{:style => 'display:none'}
+          .hide-caption-form
+            %strong Create a Caption
+            .caret.caret-up
           = form_for @label, :url => labels_url do |l|
             %p.form-group
-              = l.label 'message', 'Create a Caption:'
               = l.text_area :message, :rows => 3, :class => "form-control", :placeholder => "Enter your caption", :type => "input"
             = l.hidden_field :entry_id, :value => @entry.id
             %p
@@ -37,38 +39,11 @@
           #caption-container
             .row
               .col-md-6
-                = label_tag 'Captions:'
+                .hide-captions{:href => "#"}
+                  Hide Captions
+                  .caret.caret-up
                 #sort-filter
                   Sort By:
                   = select_tag(:type, options_for_sort, :class => "form-control")
             #captions-here
               = render "layouts/sort"
-              / - @captions ||= Label.where(:entry_id => @entry.id).order("created_at DESC")
-              / - @captions.each do |caption|
-              /   .row.caption-container{:value => caption.id}
-              /     .col-xs-12
-              /       .caption-message.well
-              /         .message
-              /           = caption.message
-              /         .row
-              /           .col-md-6
-              /             %small.user-name
-              /               = caption.user.name if caption.user
-              /           .col-md-6
-              /             %small.date
-              /               #{pretty_date(caption.created_at)} #{pretty_time(caption.created_at)}
-              /         .row
-              /           .col-xs-12
-              /             .vote
-              /               .up-vote
-              /                 .arrow{:class => ('votable' if current_user.nil? || @current_user.eligible?(caption.id))}
-              /                   = image_tag 'up-vote.png'
-              /                 .count
-              /                   +#{caption.up_votes}
-              /               .down-vote
-              /                 .arrow{:class => ('votable' if current_user.nil? || @current_user.eligible?(caption.id))}
-              /                   = image_tag 'down-vote.png'
-              /                 .count
-              /                   \-#{caption.down_votes}
-
-

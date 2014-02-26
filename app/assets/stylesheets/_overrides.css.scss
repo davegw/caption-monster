@@ -69,6 +69,14 @@ table {
       display: block;
     }
   }
+  .hide-captions,
+  .hide-caption-form {
+    display: inline-block;
+    margin-bottom: 10px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
   #remove-right-padding {
     padding-right: 0;
   }

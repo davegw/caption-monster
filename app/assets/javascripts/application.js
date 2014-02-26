@@ -111,10 +111,10 @@ $(function() {
   });
 });
 
-// Show captions.
+// Show captions toggler.
 $(function() {
   $('#show-entry-container .list-group-item.show-captions').toggle();
-  $('a.list-group-item.show-captions').click(function(event) {
+  $('a.list-group-item.show-captions, .hide-captions').click(function(event) {
     $('.list-group-item.show-captions').toggle();
   });
 });
@@ -122,7 +122,7 @@ $(function() {
 // Show create caption form.
 $(function() {
   $('#new-caption-container .list-group-item.show-caption-form').toggle();
-  $('a.list-group-item.show-caption-form').click(function(event) {
+  $('a.list-group-item.show-caption-form, .hide-caption-form').click(function(event) {
     $('.list-group-item.show-caption-form').toggle();
   });
 });
