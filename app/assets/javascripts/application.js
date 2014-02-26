@@ -22,6 +22,14 @@ $(function() {
   });
 });
 
+// Make table rows into page links.
+$(function() {
+  $('.label-entry').click(function(e) {
+    e.preventDefault();
+    window.location.href = '/caption/view/' + $(this).attr("value")
+  });
+});
+
 // Log the up vote and update the vote count asynchronously.
 var upVote = function(countVote) {
   var id = $(countVote).closest('.caption-container').attr('value');

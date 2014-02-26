@@ -6,34 +6,4 @@
   .row
     %h1
       Most Recent Images
-    #entry-index
-      %table.table.table-striped.table-hover
-        %tr
-          %th
-            ID
-          %th
-            Title
-          %th
-            Image
-          %th
-            Image Name
-          %th
-            Created At
-        - @entries.each do |p|
-          %tr.row-entry{:value => p.id}
-            %td
-              = p.id
-            %td
-              = p.title
-            %td.photo
-              = image_tag p.photo.url(:medium)
-            %td
-              - if p.photo_file_name
-                = p.photo_file_name
-              - else
-                None
-            %td
-              = pretty_date(p.created_at)
-              = pretty_time(p.created_at)
-
-    = link_to 'Create an Image', new_entry_path
+  = render "layouts/photo_dashboard"

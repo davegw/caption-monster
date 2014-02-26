@@ -34,8 +34,22 @@ table {
   }
 }
 
-#popular {
-  .popular-entry {
+// #popular-container {
+//   .popular-entry {
+//     padding: 10px;
+//     text-align: center;
+//     &:hover img {
+//       cursor: pointer;
+//     }
+//   }
+//   img {
+//     width: 90%;
+//   }
+// }
+
+#photo-dashboard-container {
+  .popular-entry,
+  .label-entry {
     padding: 10px;
     text-align: center;
     &:hover img {
@@ -43,7 +57,7 @@ table {
     }
   }
   img {
-    width: 90%;
+    width: 100%;
   }
 }
 

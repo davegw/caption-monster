@@ -1,12 +1,14 @@
-- body_id = 'Most Popular'
+- @body_id = 'popular'
 %title
   Most Popular | Caption Monster
 
-.container#popular
-  %h1
-    Most Popular
-  - @entries.each_slice(4) do |p|
-    .row
-      - p.each do |g|
-        .col-xs-6.col-md-3.popular-entry{:value => g.id}
-          = image_tag g.photo.url(:medium)
+.container#popular-container
+  .row
+    %h1
+      Most Popular
+  = render "layouts/photo_dashboard"
+  / - @entries.each_slice(4) do |p|
+  /   .row
+  /     - p.each do |g|
+  /       .col-xs-6.col-md-3.popular-entry{:value => g.id}
+  /         = image_tag g.photo.url(:medium)

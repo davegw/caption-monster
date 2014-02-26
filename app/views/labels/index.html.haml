@@ -10,30 +10,12 @@
     - else
       %h1
         Search Results:
-    #caption-index
-      - if @labels.count > 0
-        %table.table.table-striped.table-hover
-          %tr
-            %th
-              ID
-            %th
-              Image
-            %th
-              Caption
-            %th
-              Created At
-          - @labels.each do |label|
-            %tr.row-caption{:value => label.entry.id}
-              %td
-                = label.entry.id
-              %td.photo
-                = image_tag label.entry.photo.url(:medium)
-              %td
-                = label.message
-              %td
-                = pretty_date(label.created_at)
-                = pretty_time(label.created_at)
-      - else
-        %h3 No results found.
-
-    = link_to 'Create an Image', new_entry_path
+  - if @labels.count > 0
+    #photo-dashboard-container
+      - @labels.each_slice(4) do |p|
+        .row
+          - p.each do |g|
+            .col-xs-6.col-md-3.label-entry{:value => g.id}
+              = image_tag g.entry.photo.url(:medium)
+  - else
+    %h3 No results found.
