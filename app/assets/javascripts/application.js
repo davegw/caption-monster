@@ -13,6 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+// Make table rows into page links.
 $(function() {
   $('tr.row-entry, tr.row-caption, .popular-entry').click(function(e) {
     e.preventDefault();
@@ -93,6 +95,7 @@ $(function() {
 //   });
 // });
 
+// Sort captions without reloading page.
 $(function() {
   $('select').change(function(event) {
     // Use GET to correctly load request.
@@ -108,16 +111,25 @@ $(function() {
   });
 });
 
+// Show captions.
 $(function() {
   $('#show-entry-container .list-group-item.show-captions').toggle();
   $('a.list-group-item.show-captions').click(function(event) {
     $('.list-group-item.show-captions').toggle();
-  })
-})
+  });
+});
 
+// Show create caption form.
 $(function() {
   $('#new-caption-container .list-group-item.show-caption-form').toggle();
   $('a.list-group-item.show-caption-form').click(function(event) {
     $('.list-group-item.show-caption-form').toggle();
-  })
-})
+  });
+});
+
+// Correct iOS bug with fixed navigation bar when virtual keyboard is called.
+$(function() {
+  $('.ios-browser').find('input, textarea, select').click(function(event) {
+    $('.navbar-fixed-top').css('position', 'absolute');
+  });
+});

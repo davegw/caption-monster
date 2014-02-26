@@ -8,7 +8,8 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
 
-  %body{:id => @body_id}
+  // Add class when user's browser is iOS for fixed navigation bar bug. 
+  %body{:id => @body_id, :class => ("ios-browser" if detect_ios)}
     / = javascript_include_tag "application", "data-turbolinks-track" => true
     / = javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js'
 
