@@ -19,8 +19,8 @@ class LabelsController < ApplicationController
   def index
     # @labels = Label.all(:order => "created_at DESC", :limit => 10)
     if params[:query]
-      query = "%" + params[:query] + "%"
-      @labels = Label.where("message like ?", query)
+      query = "%" + params[:query].downcase + "%"
+      @labels = Label.where("LOWER(message) like ?", query)
       redirect_to show_entry_path(@labels.first.entry.id) if @labels.count == 1
     else
       @labels = Label.all(:order => "created_at DESC", :limit => 10)

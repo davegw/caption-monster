@@ -6,16 +6,11 @@
   .row
     - if request.path == '/caption/index'
       %h1
-        Most Recent Captions:
+        Most Recent Captions
     - else
       %h1
         Search Results:
   - if @labels.count > 0
-    #photo-dashboard-container
-      - @labels.each_slice(4) do |p|
-        .row
-          - p.each do |g|
-            .col-xs-6.col-md-3.label-entry{:value => g.id}
-              = image_tag g.entry.photo.url(:medium)
+    = render "layouts/caption_photo_dashboard"
   - else
     %h3 No results found.

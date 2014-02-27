@@ -1,0 +1,6 @@
+#photo-dashboard-container
+  - @entries.each_slice(4) do |p|
+    .row
+      - p.each do |g|
+        .col-xs-6.col-md-3.popular-entry{:value => g.id}
+          = image_tag g.photo.url(:medium)
