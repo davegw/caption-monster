@@ -30,20 +30,24 @@
           %span.badge 
             = Entry.where(:user_id => @entry.user.id).count
           More Entries from #{@entry.user.name}
-        %a.list-group-item.show-captions{:href => '#'}
-          %span.badge
-            = @entry.labels.count
-          Show Captions
-          .caret
-        %li.list-group-item.show-captions{:href => '#', :style => "display: none"}
-          #caption-container
-            .row
-              .col-md-6
-                .hide-captions{:href => "#"}
-                  Hide Captions
-                  .caret.caret-up
-                #sort-filter
-                  Sort By:
-                  = select_tag(:type, options_for_sort, :class => "form-control")
-            #captions-here
-              = render "layouts/sort"
+        - if @entry.labels.empty?
+          %li.list-group-item
+            No Captions Yet
+        - else
+          %a.list-group-item.show-captions{:href => '#'}
+            %span.badge
+              = @entry.labels.count
+            Show Captions
+            .caret
+          %li.list-group-item.show-captions{:href => '#', :style => "display: none"}
+            #caption-container
+              .row
+                .col-md-6
+                  .hide-captions{:href => "#"}
+                    Hide Captions
+                    .caret.caret-up
+                  #sort-filter
+                    Sort By:
+                    = select_tag(:type, options_for_sort, :class => "form-control")
+              #captions-here
+                = render "layouts/sort"
