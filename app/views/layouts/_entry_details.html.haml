@@ -29,7 +29,7 @@
         %a.list-group-item{:href => user_entries_path(@entry.user.id)}
           %span.badge 
             = Entry.where(:user_id => @entry.user.id).count
-          More Entries from #{@entry.user.name}
+          All Entries from #{@entry.user.name}
         - if @entry.labels.empty?
           %li.list-group-item
             No Captions Yet
