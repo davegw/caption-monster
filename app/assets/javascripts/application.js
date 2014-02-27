@@ -141,3 +141,11 @@ $(function() {
     $('.navbar-fixed-top').css('position', 'absolute');
   });
 });
+
+// Toggler for view image border
+$(function() {
+  $('#toggle-border a').click(function(e) {
+    e.preventDefault();
+    $('#view-image-container, #view-image-border-container, #plus-border, #minus-border').toggle();
+  });
+});

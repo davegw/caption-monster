@@ -71,6 +71,7 @@ table {
 #view-caption-container {
   .entry-image {
     display: inline-block;
+    width: 100%;
     img {
       width: 100%;
     }
@@ -115,13 +116,36 @@ body#show-caption {
 }
 
 #view-caption-container {
-  .entry-image {
-    width: 100%;
-  }
-  .message.panel-body {
+  .view-caption-message {
     font-size: 18px;
     text-align: center;
     margin: 0;
+  }
+  #view-image-border-container {
+    background-color: white;
+    border: 20px solid white;
+    .view-message {
+      padding: 15px 15px 0 15px;
+    }
+  }
+  #view-image-container {
+    display: none;
+  }
+  #toggle-border {
+    margin-top: 5px;
+    vertical-align: text-bottom;
+    a {
+      color: rgb(153, 153, 153);
+      &:hover {
+        text-decoration: none;
+      }
+      #plus-border {
+        display: none;
+      }
+    }
+  }
+  #view-options {
+    margin-top: 12px;
   }
 }
 

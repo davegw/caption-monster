@@ -8,12 +8,24 @@
       / - if current_user && @entry.user.present? && current_user.id == @entry.user.id
       /   %h3.delete
       /     = link_to 'Delete', entry_url(@entry.id), :method => :delete
-      .entry-image
+      #view-image-border-container.entry-image
         = image_tag @entry.photo.url
-        .caption-message.panel.panel-default
-          .message.panel-body
+        .view-caption-message
+          .view-message
             = @label.message
-  .row
+      #view-image-container.entry-image
+        = image_tag @entry.photo.url
+        .view-caption-message.panel.panel-default
+          .view-message.panel-body
+            = @label.message
+    .col-md-2
+      #toggle-border
+        %a{:href => "#"} 
+          %p
+            %span#minus-border -
+            %span#plus-border +
+            Toggle Border
+  .row#view-options
     .col-xs-5.col-md-2.col-md-offset-2
       %a.btn.btn-primary{:href => show_entry_path(@entry.id)}
         Caption Options
