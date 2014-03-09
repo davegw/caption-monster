@@ -71,6 +71,11 @@ table {
 }
 
 #home {
+  #log-in-alert-notice {
+    margin: 0;
+    padding: 5px;
+    text-align: center;
+  }
   .home-title {
     h1 {
       color: $brand-primary;

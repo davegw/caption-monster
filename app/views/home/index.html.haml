@@ -2,6 +2,10 @@
 %title
   Home | Caption Monster
 
+- if flash[:notice]
+  .alert.alert-warning#log-in-alert-notice
+    %strong
+      = flash[:notice]
 .jumbotron
   .home-title
     .row

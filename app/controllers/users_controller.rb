@@ -13,7 +13,8 @@ class UsersController < ApplicationController
     if @user.save
       @user.transfer_unregistered!(current_user) if current_user && !current_user.registered?
       session[:user_id] = @user.id
-      redirect_to show_user_url(@user.id)
+      flash[:notice] = "Account Registered!"
+      redirect_to root_url
     else
       render 'new'
     end

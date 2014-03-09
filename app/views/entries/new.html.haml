@@ -1,11 +1,11 @@
-- body_id = 'new-entry'
+- @body_id = 'new-entry'
 %title
   Create Entry | Caption Monster
 
 .container
   .col-md-6
     %h1
-      Create an Entry
+      Create an Image
     - if @entry.errors.any?
       .error-messages
         %h3 Could not upload image:
@@ -19,7 +19,7 @@
     .upload_form
       = form_for @entry, :url => entries_url, :html => {:class => "nifty-form", :multipart => true } do |f|
         .upload.form-group
-          = f.label 'photo', 'Upload your photo:'
+          = f.label 'photo', 'Upload your image:'
           = f.file_field :photo
           %p.help-block Select an image to upload.
         .title.form-group

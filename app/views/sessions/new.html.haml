@@ -1,11 +1,15 @@
-- body_id = 'log-in'
+- @body_id = 'log-in'
 %title
   Log In | Caption Monster
 
 .container
   .col-md-3
     %h1 Log In
-
+    - if flash[:alert]
+      .error-messages
+        %ul.list-group
+          %li.list-group-item.list-group-item-danger
+            = flash[:alert]
     = form_tag sessions_path do
       %p.form-group
         = label_tag :email, "Email:"
