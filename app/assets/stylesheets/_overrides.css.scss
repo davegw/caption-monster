@@ -16,7 +16,10 @@ body {
 
 .navbar {
   .search-header-item {
-    padding: 0 15px;
+    form {
+      margin-left: 0;
+      margin-right: 0;
+    }
   }
 }
 table {
