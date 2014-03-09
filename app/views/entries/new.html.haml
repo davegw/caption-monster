@@ -6,6 +6,15 @@
   .col-md-6
     %h1
       Create an Entry
+    - if @entry.errors.any?
+      .error-messages
+        %h3 Could not upload image:
+        .row
+          .col-md-6
+            %ul.list-group
+              - for message in @entry.errors.full_messages
+                %li.list-group-item.list-group-item-danger
+                  = message
 
     .upload_form
       = form_for @entry, :url => entries_url, :html => {:class => "nifty-form", :multipart => true } do |f|

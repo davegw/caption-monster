@@ -12,21 +12,21 @@
     .collapse.navbar-collapse#bs-example-navbar-collapse-1
       %ul.nav.navbar-nav
         %li{:class => "#{active_class('entry/new')}"}
-          = link_to "Create Entry", new_entry_path
-        %li{:class => "#{active_class('entry/index')}"}
-          %a{:href => entries_index_path} Recent Entries
+          = link_to "Upload Image", new_entry_path
         %li.dropdown
           %a.dropdown-toggle{:href => "#", "data-toggle" => "dropdown"} 
             Create Captions
             %b.caret
           %ul.dropdown-menu
+            %li.dropdown-header
+              Find Captions:
             %li
-              = link_to "Random Entry", random_entry_path(:id)
+              = link_to "Random Image", random_entry_path(:id)
             %li.divider
             %li
               = link_to "Most Popular", popular_entry_path(:id)
             %li
-              = link_to "Recent Entries", entries_index_path
+              = link_to "Recent Images", entries_index_path
             %li
               = link_to "Recent Captions", captions_index_path
       %ul.nav.navbar-nav.navbar-right

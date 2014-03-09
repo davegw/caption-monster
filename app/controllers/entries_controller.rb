@@ -11,8 +11,11 @@ class EntriesController < ApplicationController
       session[:user_id] = user.id
     end
     @entry = Entry.new(:title => params[:entry][:title], :photo => params[:entry][:photo], :user_id => user.id)
-    @entry.save
-    redirect_to show_entry_path(@entry.id)
+    if @entry.save
+      redirect_to show_entry_path(@entry.id)
+    else
+      render 'new'
+    end
   end
 
   def destroy

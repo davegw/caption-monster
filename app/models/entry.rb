@@ -5,6 +5,8 @@ class Entry < ActiveRecord::Base
                     :convert_options => { :all => '-auto-orient' },
                     :default_url => "/system/entries/photos/no_image.jpg"
   validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
+  validates_presence_of :photo
+  validates_presence_of :title
 
   def self.find_by_user_id(id)
     Entry.where(:user => 

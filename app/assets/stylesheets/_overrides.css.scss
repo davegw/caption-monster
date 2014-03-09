@@ -46,6 +46,42 @@ table {
 //     width: 90%;
 //   }
 // }
+ 
+// @media screen and (max-width: 400px) {
+//   #home {
+//     .jumbotron {
+//       .home-title {
+//         h1 {
+//             font-size: 2em;
+//         }
+//         h2 {
+//           font-size: 1.5em;
+//         }
+//       }
+//     }
+//   }
+// }
+
+#home {
+  margin-top: -20px;
+  .home-title {
+    h1 {
+      color: $brand-primary;
+    }
+    h1, h2 {
+      text-align: center;
+      margin: 0;
+    }
+    h2 {
+      font-style: italic;
+      margin-top: 5px;
+    }
+    p {
+      margin-top: 30px;
+      font-style: italic;
+    }
+  }
+}
 
 #photo-dashboard-container {
   .popular-entry,
