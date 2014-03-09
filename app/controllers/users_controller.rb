@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(:email => params[:user][:email], 
+    @user = User.new(:email => params[:user][:email].downcase, 
                      :name => params[:user][:name], 
                      :password => params[:user][:password], 
                      :password_confirmation => params[:user][:password_confirmation],
