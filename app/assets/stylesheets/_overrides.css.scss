@@ -47,20 +47,19 @@ table {
 //   }
 // }
  
-// @media screen and (max-width: 400px) {
-//   #home {
-//     .jumbotron {
-//       .home-title {
-//         h1 {
-//             font-size: 2em;
-//         }
-//         h2 {
-//           font-size: 1.5em;
-//         }
-//       }
-//     }
-//   }
-// }
+// Re-size homepage title to keep on same line.
+@media screen and (max-width: 400px) {
+  #home {
+    .home-title {
+      h1 {
+          font-size: 2em;
+      }
+      h2 {
+        font-size: 1.6em;
+      }
+    }
+  }
+}
 
 #home {
   margin-top: -20px;
