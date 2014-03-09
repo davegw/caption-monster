@@ -13,6 +13,12 @@ body {
 .navbar-inverse .navbar-brand{
   color: $brand-primary;
 }
+
+.navbar {
+  .search-header-item {
+    padding: 0 15px;
+  }
+}
 table {
   // border-collapse: collapse;
   border: 1px solid $table-border-color;
@@ -55,7 +61,7 @@ table {
           font-size: 2em;
       }
       h2 {
-        font-size: 1.6em;
+        font-size: 1.5em;
       }
     }
   }

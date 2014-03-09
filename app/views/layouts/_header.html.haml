@@ -30,7 +30,8 @@
             %li
               = link_to "Recent Captions", captions_index_path
       %ul.nav.navbar-nav.navbar-right
-        = render 'layouts/header_search'
+        %li.search-header-item
+          = render 'layouts/header_search'
         - if current_user 
           - if current_user.registered?
             %li.dropdown
