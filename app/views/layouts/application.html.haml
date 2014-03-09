@@ -15,5 +15,9 @@
 
     #header
       = render 'layouts/header'
-    #main
-      = yield
+    - if @home
+      #main-home
+        = yield
+    - else
+      #main
+        = yield

@@ -14,8 +14,8 @@
       .col-md-8.col-md-offset-2
         %p
           Caption Monster was designed to be a fun place to create picture captions. You can upload images, write captions and vote on their favorite captions. Upload a picture and see what crazy captions others come up with or create your own.
-.container#view-caption-container
-  .row.home-options
+.container#home-container
+  .row
     .col-md-6
       %h2 
         Create an Image
@@ -48,3 +48,10 @@
                 = link_to "Recent Captions", captions_index_path
               %li
                 = link_to "Most Popular", popular_entry_path(:id)
+.jumbotron.home-footer
+  .row
+    .col-xs-12
+      %h3
+        %small
+          Created by
+          = link_to "David Gertmenian-Wong", "http://www.linkedin.com/pub/david-gertmenian-wong/9/1a7/358", :target => "_blank"

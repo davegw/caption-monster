@@ -71,7 +71,6 @@ table {
 }
 
 #home {
-  margin-top: -20px;
   .home-title {
     h1 {
       color: $brand-primary;
@@ -88,6 +87,15 @@ table {
       margin-top: 30px;
       font-style: italic;
     }
+  }
+  #home-container {
+    margin-bottom: 30px;
+  }
+  .jumbotron.home-footer {
+    margin-bottom: 0px;
+    text-align: center;
+    padding-left: 15px;
+    padding-right: 15px;
   }
 }
 
