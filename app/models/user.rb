@@ -8,10 +8,8 @@ class User < ActiveRecord::Base
 
   validates_confirmation_of :password
   validate :registered_user_has_valid_password
-  validates_presence_of :email
-  validates_presence_of :name
-  validates_uniqueness_of :email
-  validates_uniqueness_of :name
+  validates_presence_of :email, :name, :password, :password_confirmation
+  validates_uniqueness_of :email, :name
 
 
   def encrypt_password
@@ -23,10 +21,12 @@ class User < ActiveRecord::Base
 
   def self.authenticate(email, password)
     user = find_by_email(email)
-    if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
+    if user.nil?
+      nil
+    elsif user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
       user
     else
-      nil
+      false
     end
   end
 
