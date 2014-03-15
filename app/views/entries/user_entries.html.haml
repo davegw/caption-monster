@@ -1,10 +1,10 @@
 - body_id = 'user-entries'
 %title
-  #{current_user.name}'s Entries | Caption Monster
+  #{@user.name}'s Entries | Caption Monster
 
 .container
   .row
     %h1
-      #{current_user.name}'s Entries
+      #{@user.name}'s Entries
   = render 'layouts/entry_photo_dashboard'
   
