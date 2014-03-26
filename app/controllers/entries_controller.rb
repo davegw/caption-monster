@@ -46,7 +46,6 @@ class EntriesController < ApplicationController
 
   def user_entries
     @entries = Entry.find_by_user_id(params[:id])
-    @user = User.find(params[:id])
   end
 
   def random
