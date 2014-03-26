@@ -7,11 +7,8 @@ class SessionsController < ApplicationController
     if @user
       session[:user_id] = @user.id
       redirect_to root_path, :notice => "Logged In!"
-    elsif @user.nil?
-      flash.alert = "Email address does not exist."
-      redirect_to log_in_path
     else
-      flash.alert = "Invalid password."
+      flash.alert = "Invalid email or password."
       redirect_to log_in_path
     end
   end
