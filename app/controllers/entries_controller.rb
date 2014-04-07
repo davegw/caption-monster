@@ -12,6 +12,7 @@ class EntriesController < ApplicationController
     end
     @entry = Entry.new(:title => params[:entry][:title], :photo => params[:entry][:photo], :user_id => user.id)
     if @entry.save
+      Label.create(:message => @entry.title, :entry_id => @entry.id, :user_id => user.id)
       redirect_to show_entry_path(@entry.id)
     else
       render 'new'
