@@ -45,6 +45,7 @@ class EntriesController < ApplicationController
   end
 
   def user_entries
+    @user = User.find(params[:id])
     @entries = Entry.find_by_user_id(params[:id])
   end
 
